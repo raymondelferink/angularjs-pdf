@@ -31,9 +31,11 @@
     };
     return {
       restrict: 'E',
-      templateUrl: function(element, attr) {
-        return attr.templateUrl ? attr.templateUrl : 'partials/viewer.html';
+      
+      scope: {
+          templateUrl: "="
       },
+      template: '<div ng-include="templateUrl"></div>',
       link: function(scope, element, attrs) {
         element.css('display', 'block');
         var url = scope.pdfUrl;
